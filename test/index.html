@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fluid</title>
+  <style>
+    :root {
+      --font-sm: 40;
+      --font-lg: 80;
+
+    }
+
+    .fluid {
+      font-size: clamp((var(--font-sm) * (1rem / 16)), (((var(--font-sm) - ((var(--font-lg) - var(--font-sm)) / (1920 - 375)) * 375) * (1rem / 16)) + (((var(--font-lg) - var(--font-sm)) / (1920 - 375)) * 100vi)), (var(--font-lg) * (1rem / 16)));
+    }
+  </style>
+</head>
+<body>
+  <h1 class="fluid">Fluid</h1>
+</body>
+</html>
