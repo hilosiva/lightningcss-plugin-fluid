@@ -11,7 +11,14 @@ export interface Config {
 	unit: "vi" | "vw" | "cqw" | "cqi";
 }
 
-export default (opts?: Partial<Config>) => ({
+export interface Options {
+	minViewPort?: number;
+	maxViewPort?: number;
+	baseFontSize?: number;
+	unit?: "vi" | "vw" | "cqw" | "cqi";
+}
+
+export default (opts: Options = {}) => ({
 	FunctionExit: {
 		fluid(f: LightningCssFunction) {
 			const defaultOptions: Config = {
