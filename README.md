@@ -94,7 +94,7 @@ font-size: clamp((var(--font-sm) * (1rem / 16)), (((var(--font-sm)  - ((var(--fo
 | `minViewPort` | デフォルトとして使う最小ビューポートのpx値（既定値: `375`）  | number / undefined  |
 | `maxViewPort`  |  デフォルトとして使う最大ビューポートのpx値（既定値: `1920`）  | number / undefined |
 | `baseFontSize`  | デフォルトとしてルート要素のフォントサイズpx値（既定値: `16`） | number / undefined |
-| `unit`  | 推奨値に利用する単位（既定値: `"vw"`） | "vi" | "vw" | "cqw" | "cqi" |
+| `unit`  | 推奨値に利用する単位（既定値: `"vw"`） | "vi" / "vw" / "cqw" / "cqi" |
 
 
 vite.config.js
