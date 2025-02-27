@@ -62,7 +62,7 @@ describe("fluidVisitor", () => {
 		expect(output).toContain("cqi");
 	});
 	it("should handle custom property", () => {
-		const input = "p {font-size: fluid(var(--font-sm, 16px) var(--font-lg))} ";
+		const input = "p {font-size: fluid(var(--font-sm) var(--font-lg))} ";
 
 		const output = transform({
 			filename: "input.css",

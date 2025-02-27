@@ -39,8 +39,13 @@
 			}
 		}
 	},
-	"files": ["dist"],
-	"keywords": ["lightningcss-plugin", "clump"],
+	"files": [
+		"dist"
+	],
+	"keywords": [
+		"lightningcss-plugin",
+		"clump"
+	],
 	"repository": {
 		"type": "git",
 		"url": "https://github.com/hilosiva/lightningcss-plugin-fluid"

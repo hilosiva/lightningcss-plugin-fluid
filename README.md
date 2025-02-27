@@ -66,7 +66,23 @@ font-size: clamp(1.5rem, 1.25728rem + 1.0356vi, 2.5rem);
 margin-block: clamp(2.5rem, 2.13592rem + 1.5534vi, 4rem) clamp(1.5rem, 0rem + 3.125vi, 2rem);
 ```
 
+カスタムプロパティは、単位なしのpx値のみ対応しています。
 
+
+例
+```css
+--font-sm: 14;
+--font-lg: 20;
+
+font-size: fluid(var(--font-sm) var(--font-lg));
+```
+
+
+
+ビルド結果
+```css
+font-size: clamp((var(--font-sm) * (1rem / 16)), (((var(--font-sm)  - ((var(--font-lg)  - var(--font-sm)) / (1920 - 375)) * 375 ) * (1rem / 16))  + ( ((var(--font-lg)  - var(--font-sm)) / (1920 - 375)) * 100vi)), (var(--font-lg) * (1rem / 16)));
+```
 
 
 ## オプション
@@ -78,6 +94,7 @@ margin-block: clamp(2.5rem, 2.13592rem + 1.5534vi, 4rem) clamp(1.5rem, 0rem + 3.
 | `minViewPort` | デフォルトとして使う最小ビューポートのpx値（既定値: `375`）  | number / undefined  |
 | `maxViewPort`  |  デフォルトとして使う最大ビューポートのpx値（既定値: `1920`）  | number / undefined |
 | `baseFontSize`  | デフォルトとしてルート要素のフォントサイズpx値（既定値: `16`） | number / undefined |
+| `unit`  | 推奨値に利用する単位（既定値: `"vw"`） | "vi" | "vw" | "cqw" | "cqi" |
 
 
 vite.config.js
