@@ -66,8 +66,37 @@ font-size: clamp(1.5rem, 1.25728rem + 1.0356vi, 2.5rem);
 margin-block: clamp(2.5rem, 2.13592rem + 1.5534vi, 4rem) clamp(1.5rem, 0rem + 3.125vi, 2rem);
 ```
 
-カスタムプロパティは、単位なしのpx値のみ対応しています。
+## 個別単位指定
 
+`fluid()` 関数で個別に単位を指定することで、グローバルの単位設定を上書きできます：
+
+```css
+/* 個別にvw単位を指定 */
+font-size: fluid(16px, 32px, vw);
+```
+
+ビルド結果
+```css
+font-size: clamp(1rem, 0.2rem + 4.27vw, 2rem);
+```
+
+ビューポートと単位を両方指定することも可能です：
+
+```css
+/* ビューポートとcqi単位を指定 */
+font-size: fluid(16px, 32px, 320px, 1280px, cqi);
+```
+
+ビルド結果
+```css
+font-size: clamp(1rem, 0.33rem + 1.67cqi, 2rem);
+```
+
+単位の優先順位：**個別指定の単位** > **グローバル設定の単位** > **デフォルト（vi）**
+
+## カスタムプロパティ
+
+カスタムプロパティは、単位なしのpx値のみ対応しています。
 
 例
 ```css
@@ -77,11 +106,20 @@ margin-block: clamp(2.5rem, 2.13592rem + 1.5534vi, 4rem) clamp(1.5rem, 0rem + 3.
 font-size: fluid(var(--font-sm) var(--font-lg));
 ```
 
-
-
 ビルド結果
 ```css
 font-size: clamp((var(--font-sm) * (1rem / 16)), (((var(--font-sm)  - ((var(--font-lg)  - var(--font-sm)) / (1920 - 375)) * 375 ) * (1rem / 16))  + ( ((var(--font-lg)  - var(--font-sm)) / (1920 - 375)) * 100vi)), (var(--font-lg) * (1rem / 16)));
+```
+
+カスタムプロパティでも個別単位指定が可能です：
+
+```css
+font-size: fluid(var(--font-sm), var(--font-lg), vw);
+```
+
+ビルド結果
+```css
+font-size: clamp((var(--font-sm) * (1rem / 16)), (((var(--font-sm)  - ((var(--font-lg)  - var(--font-sm)) / (1920 - 375)) * 375 ) * (1rem / 16))  + ( ((var(--font-lg)  - var(--font-sm)) / (1920 - 375)) * 100vw)), (var(--font-lg) * (1rem / 16)));
 ```
 
 
@@ -94,7 +132,7 @@ font-size: clamp((var(--font-sm) * (1rem / 16)), (((var(--font-sm)  - ((var(--fo
 | `minViewPort` | デフォルトとして使う最小ビューポートのpx値（既定値: `375`）  | number / undefined  |
 | `maxViewPort`  |  デフォルトとして使う最大ビューポートのpx値（既定値: `1920`）  | number / undefined |
 | `baseFontSize`  | デフォルトとしてルート要素のフォントサイズpx値（既定値: `16`） | number / undefined |
-| `unit`  | 推奨値に利用する単位（既定値: `"vw"`） | "vi" / "vw" / "cqw" / "cqi" |
+| `unit`  | 推奨値に利用する単位（既定値: `"vi"`） | "vi" / "vw" / "cqw" / "cqi" |
 
 
 vite.config.js
